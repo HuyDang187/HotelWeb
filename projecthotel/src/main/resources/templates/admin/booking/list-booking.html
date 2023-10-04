@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin-Users</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<h1>User list</h1>
+<!--<a th:href="@{/rooms/admin/showFormForAdd}" class="btn btn-primary btn-sm mr-5 mb-3">-->
+<!--    Add Room-->
+<!--</a>-->
+<table class="table table-bordered table-striped">
+
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Username</th>
+        <th>Phone </th>
+        <th>Address</th>
+        <th>Date of birth</th>
+        <th>Avatar</th>
+        <th>Enabled</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tempUser : ${users}">
+        <td th:text="${tempUser.id}"></td>
+        <td th:text="${tempUser.last_name} +' '+ ${tempUser.first_name}"></td>
+        <td th:text="${tempUser.username}"></td>
+        <td th:text="${tempUser.phone_number}"></td>
+        <td th:text="${tempUser.address}"></td>
+        <td th:text="${tempUser.date_of_birth}"></td>
+
+        <td>
+            <img th:src="@{'/images/roomImg/'+${tempUser.users_img}}" style="width: 150px;height: 150px;border-radius: 3px;">
+        </td>
+        <td th:text="${tempUser.enabled}"></td>
+
+
+
+        <td>
+            <div>
+                <a th:href="@{/users/admin/userdetail(userID=${tempUser.id})}" class="btn btn-info btn-sm">
+                    Detail
+                </a>
+            </div>
+            <!--            <div>-->
+            <!--                <a th:href="@{/rooms/admin/delete(roomId=${tempRoom.id})}"-->
+            <!--                   class="btn btn-danger btn-sm" onclick="if (!(confirm('Are you sure you want to delete this ticket?')))return false">-->
+            <!--                    Delete-->
+            <!--                </a>-->
+            <!--            </div>-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

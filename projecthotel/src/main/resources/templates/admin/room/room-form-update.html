@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/admin-css.css">
+    <title>Update Room</title>
+</head>
+<body>
+<div class="navbar">
+    <div class="logo">
+        <img src="/images/logo-admin.png" />
+    </div>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="/rooms/admin/list">Rooms</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/users/admin/list">Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Bookings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/rooms/admin/list">Home</a></li>
+            <li class="breadcrumb-item"><a href="/rooms/admin/list">Room</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Update Room</li>
+        </ol>
+    </nav>
+    <h3>Room Directory</h3>
+    <hr/>
+    <p class="h4 mb-4">Update Room</p>
+    <form th:action="@{/rooms/admin/update}"
+          th:object="${room}" method="POST" enctype="multipart/form-data" >
+        <input type="hidden" th:field="*{id}"/>
+        <label >Room Title :</label>
+        <input type="text" th:field="*{roomTitle}" name="roomTitle" class="form-control mb-4 col-4" placeholder="Title">
+        <label >Room Type:</label>
+        <select th:field="*{roomType}" class="form-control mb-4 col-4">
+            <option value="Deluxe">Deluxe</option>
+            <option value="Premium">Premium</option>
+            <option value="Suite">Suite</option>
+            <option value="Excutive">Excutive</option>
+            <option value="Terrace">Terrace</option>
+            <option value="President">President</option>
+        </select>
+        <label >Room Desciption :</label>
+        <input type="text" th:field="*{roomDescription}" class="form-control mb-4 col-4" placeholder="Description">
+        <label >Room IMG :</label>
+        <input type="file" name="image" accept="image/*" style="display: block" />
+        <input type="hidden" th:field="*{roomImg}"/>
+        <label >Room Available :</label>
+        <input type="text" th:field="*{roomAvailable}" class="form-control mb-4 col-4" placeholder="Available">
+        <label >Room person :</label>
+        <input type="text" th:field="*{roomMax}" class="form-control mb-4 col-4" placeholder="Max-person">
+        <label >Room size :</label>
+        <input type="text" th:field="*{roomSize}" class="form-control mb-4 col-4" placeholder="Room-size">
+        <label >Room Bed :</label>
+        <input type="text" th:field="*{roomBed}" class="form-control mb-4 col-4" placeholder="Room-bed">
+        <label >Room Price :</label>
+        <input type="text" th:field="*{price}" class="form-control mb-4 col-4" placeholder="Price">
+
+        <button type="submit" class="btn btn-info col-2">Update</button>
+    </form>
+    <hr/>
+    <a th:href="@{/rooms/admin/list}">Back to Room List</a>
+</div>
+</body>
+</html>

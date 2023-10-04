@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js"
+            integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Đặt Phòng</h1>
+
+<form th:action="@{/bookings/book}" th:object="${booking}" method="post">
+    <label for="checkinDate">Ngày nhận phòng:</label>
+    <input type="date" id="checkinDate" th:field="*{checkin_date}" required>
+
+    <label for="checkoutDate">Ngày trả phòng:</label>
+    <input type="date" id="checkoutDate" th:field="*{checkout_date}" required>
+
+    <!-- Các trường thông tin khác của đặt phòng -->
+
+    <button type="submit">Đặt Phòng</button>
+</form>
+
+<!-- Các thông báo, thông tin đặt phòng thành công sẽ được hiển thị ở đây -->
+</body>
+</html>
